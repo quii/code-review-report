@@ -39,7 +39,7 @@ func main() {
 	log.Printf("Fetching report(s) for %v, owned by %q", repos, owner)
 
 	for _, repo := range repos {
-		commits, err := service.GetCommits(context.Background(), Monday(), owner, repo)
+		commits, err := service.GetCommits(context.Background(), LastMonday(), owner, repo)
 
 		if err != nil {
 			log.Fatal(err)
@@ -51,14 +51,10 @@ func main() {
 
 }
 
-func Monday() time.Time {
-	date := time.Now()
+func LastMonday() time.Time {
+	now := time.Now()
+	year, month, day := now.Date()
+	lastMonday := day - int((now.Weekday()+6)%7)
 
-	for date.Weekday() != time.Monday {
-		date = date.Add(-1 * (time.Hour * 24))
-	}
-
-	year, month, day := date.Date()
-
-	return time.Date(year, month, day, 0, 0, 0, 0, date.Location())
+	return time.Date(year, month, lastMonday, 0, 0, 0, 0, now.Location())
 }
