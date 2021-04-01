@@ -1,4 +1,4 @@
-# ci-league 
+# ci-league ![build status](https://github.com/quii/code-review-report/workflows/Test/badge.svg)
 
 Generates a report for Friday's code review 
 
