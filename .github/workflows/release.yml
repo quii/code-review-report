@@ -6,7 +6,6 @@ jobs:
   release-osx:
     name: release osx
     runs-on: ubuntu-latest
-    project_path: cmd/codereviewreport
     steps:
       - uses: actions/checkout@v2
       - uses: wangyoucao577/go-release-action@v1.16
@@ -14,3 +13,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           goos: darwin
           goarch: amd64
+          project_path: cmd/codereviewreport
