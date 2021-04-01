@@ -13,4 +13,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           goos: darwin
           goarch: amd64
-          project_path: cmd/codereviewreport
+          project_path: ./cmd/codereviewreport
