@@ -27,7 +27,7 @@ jobs:
     - name: Test
       run : go test ./...
 
-    release-osx:
+    - release-osx:
       name: release osx
       runs-on: ubuntu-latest
       steps:
