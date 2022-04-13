@@ -4,11 +4,12 @@ import (
 	"context"
 	"encoding/json"
 	"flag"
-	"github.com/quii/code-review-report/github"
-	"github.com/quii/code-review-report/report"
 	"log"
 	"os"
 	"time"
+
+	"github.com/quii/code-review-report/github"
+	"github.com/quii/code-review-report/report"
 )
 
 type arrayFlags []string
@@ -39,7 +40,8 @@ func main() {
 	log.Printf("Fetching report(s) for %v, owned by %q", repos, owner)
 
 	for _, repo := range repos {
-		commits, err := service.GetCommits(context.Background(), LastMonday(), owner, repo)
+		twoWeeksAgo := -(time.Hour * 24 * 14)
+		commits, err := service.GetCommits(context.Background(), time.Now().Add(twoWeeksAgo), owner, repo)
 
 		if err != nil {
 			log.Fatal(err)
