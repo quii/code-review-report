@@ -17,3 +17,16 @@ Download the latest binary from [releases](https://github.com/quii/code-review-r
 
 - You'll need a `$GITHUB_TOKEN` env var if you need this to work with private repos
 - Put the binary somewhere in your $PATH for convienience
+
+## some other useful commands
+
+`git log --pretty="%h [%cn] (%ar)  %s" --since="1 hour ago"`
+
+```
+git log --since 6.months.ago --numstat |
+  awk '/^[0-9-]+/{ print $NF}' |
+  sort |
+  uniq -c |
+  sort -nr |
+  head
+```
